@@ -1,0 +1,9 @@
+Package: easycsv
+Type: Package
+Title: load multiple csv\txt tables
+Version: 0.1.0
+Authors@R: person("Dror", "Bogin", email = "dror.bogin@gmail.com",role = c("aut", "cre"))
+Description: easycsv contains only three functions:   1. loadcsv_multi which is used to load multiple table in ".csv"\".txt" format from a local directory   2. loadcsvfromZIP which is used to load multiple table in ".csv"\".txt"" format from a .zip file it does not work with ".rar"\".tar"\".gz" files. only ".zip".   3. loadZIPcsvfromURL which is used to load multiple table in ".csv"\".txt"" format from a .zip file on a remote directory
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
