@@ -1,3 +1,5 @@
+#' @importFrom stats setNames
+#' @importFrom utils choose.dir read.csv unzip
 loadcsvfromZIP <- function(filezip = NULL,
                            encoding = NULL,
                            txt = FALSE ,

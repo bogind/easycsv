@@ -1,3 +1,5 @@
+#' @importFrom stats setNames
+#' @importFrom utils choose.dir read.csv unzip
 loadcsv_multi <- function(directory = NULL,
                           txt = FALSE,
                           encoding = NULL,
@@ -6,6 +8,7 @@ loadcsv_multi <- function(directory = NULL,
                           quote = "\"",
                           fill = TRUE,
                           comment.char = ""){
+
   if(is.null(directory)){
     directory <- choose.dir()
   }

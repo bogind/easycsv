@@ -62,18 +62,6 @@ loadZIPcsvfromURL is used for comma seperated tables inside of a .zip file on th
 %% ...
 A data frame (http://127.0.0.1:10235/help/library/utils/help/data.frame) containing a representation of the data in the file.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
-\author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 \link[easycsv]{loadcsvfromZIP}
