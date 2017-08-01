@@ -4,27 +4,32 @@ loadcsv_multi <- function(directory = choose.dir(),
                           stringsAsFactors = FALSE,
                           header = TRUE,
                           quote = "\"",
-                          fill = TRUE, comment.char = ""){
+                          fill = TRUE,
+                          comment.char = ""){
   if(is.null(directory)){
     directory <- choose.dir()
   }
-  placeholder = getwd()
-  setwd(directory)
+
+  directory = paste(gsub(pattern = "\\", "/", directory,
+                         fixed = TRUE))
   ending = ifelse(txt == TRUE,
                   "*.txt$",
                   "*.csv$")
-    temp = list.files(pattern=ending)
-      list2env(
-        lapply(setNames(temp,
-                        make.names(paste0(gsub(ending, "", temp)))),
+    temppath = paste(directory,list.files(path = directory, pattern=ending), sep = "/")
+    tempfiles = list.files(path = directory, pattern=ending)
+    list2env(
+        lapply(setNames(temppath,
+                        make.names(paste0(gsub(ending, "", tempfiles)))),
                read.csv,
-               encoding = encoding,
+               encoding = ifelse(base::is.null(encoding),
+                                 NULL,
+                                 encoding),
                stringsAsFactors = stringsAsFactors,
                header = header,
                quote = quote,
                fill = fill,
                comment.char = comment.char),
         envir = .GlobalEnv)
-      setwd(placeholder)
+
 
 }
