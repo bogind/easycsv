@@ -1,19 +1,38 @@
-loadcsvfromZIP <- function(filezip = file.choose(), encoding = NULL,txt = FALSE ,stringsAsFactors = FALSE,
-                           header = TRUE,quote = "\"",fill = TRUE, comment.char = ""){
+loadcsvfromZIP <- function(filezip = file.choose(),
+                           encoding = NULL,
+                           txt = FALSE ,
+                           stringsAsFactors = FALSE,
+                           header = TRUE,
+                           quote = "\"",
+                           fill = TRUE,
+                           comment.char = ""){
   if(is.null(filezip)){
     filezip <- unzip(zipfile = file.choose())
   }else{
     filezip <- unzip(zipfile = filezip)
   }
-  ending = ifelse(txt == TRUE,"*.txt$","*.csv$")
-  list2env(setNames(object = lapply(filezip,
-                                    read.csv,
-                                    stringsAsFactors = stringsAsFactors,
-                                    header = header,
-                                    quote = quote,fill = fill, comment.char = comment.char),
-                    nm = make.names(
-                      paste0("", substr(
-                        gsub(ending,"", filezip)
-                        ,3, 40 )))), globalenv())
+  if(base::substr(filezip,
+                  base::nchar(filezip)-3,
+                  base::nchar(filezip)) != ".zip"){
+    message("Please supply a valid .zip file")
+
+  }
+  else{
+    ending = ifelse(txt == TRUE,
+                    "*.txt$",
+                    "*.csv$")
+    list2env(setNames(object = lapply(filezip,
+                                      read.csv,
+                                      stringsAsFactors = stringsAsFactors,
+                                      header = header,
+                                      quote = quote,
+                                      fill = fill,
+                                      comment.char = comment.char),
+                      nm = make.names(
+                        paste0("", substr(
+                          gsub(ending,"", filezip)
+                          ,3, 40 )))), globalenv())
+  }
+
 
 }
