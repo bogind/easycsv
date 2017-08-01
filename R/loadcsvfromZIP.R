@@ -1,4 +1,4 @@
-loadcsvfromZIP <- function(filezip = file.choose(),
+loadcsvfromZIP <- function(filezip = NULL,
                            encoding = NULL,
                            txt = FALSE ,
                            stringsAsFactors = FALSE,
