@@ -1,5 +1,6 @@
 #' @importFrom stats setNames
 #' @importFrom utils read.csv unzip
+#' @export
 loadcsv_multi <- function(directory = NULL,
                           txt = FALSE,
                           encoding = "Latin-1",

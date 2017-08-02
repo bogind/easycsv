@@ -53,9 +53,10 @@ loadcsvfromZIP(filezip = NULL,
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
-loadcsv_multi is used for uncompressed files in a single folder.
-loadcsvfromZIP is used for comma seperated tables inside of a .zip file.
-loadZIPcsvfromURL is used for comma seperated tables inside of a .zip file on the internet, no download needed.
+loadcsv_multi is used for uncompressed files in a single folder.it can be used either by entering the local directory the files are in, or just running it with no arguments for manual folder selection on windows OS.
+It receives some arguments from read.csv and they are listed in the arguments section.
+loadcsvfromZIP is used for comma separated tables inside of a .zip file.
+loadZIPcsvfromURL is used for comma separated tables inside of a .zip file on the internet, no download needed.
 }
 \value{
 %%  ~Describe the value returned

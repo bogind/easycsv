@@ -1,5 +1,6 @@
 #' @importFrom stats setNames
 #' @importFrom utils read.csv unzip
+#' @export
 loadZIPcsvfromURL <- function(urlAddress = NULL,
                               txt = FALSE ,
                               encoding = "Latin-1",
@@ -10,11 +11,11 @@ loadZIPcsvfromURL <- function(urlAddress = NULL,
                               comment.char = ""){
   temp <- tempfile()
   if(is.null(urlAddress)){
-  message("Please supply a valid URL containing a .zip file")
+  stop("Please supply a valid URL containing a .zip file")
   }
   urlend = base::substr(urlAddress,base::nchar(urlAddress)-3, base::nchar(urlAddress))
   if(urlend != ".zip"){
-    message("Please supply a valid URL containing a .zip file")
+    stop("Please supply a valid URL containing a .zip file")
   }else{
     utils::download.file(urlAddress,
                   destfile = temp,
@@ -42,7 +43,7 @@ loadZIPcsvfromURL <- function(urlAddress = NULL,
                                                     3, 40))))
                    , base::globalenv())
 
-    base::unlink(temp)
+    base::unlink(temp, recursive = TRUE)
   }
 
 
