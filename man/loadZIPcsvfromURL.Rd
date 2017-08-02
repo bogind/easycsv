@@ -12,13 +12,13 @@ Reads multiple files in table format and creates a data frame from them, with ca
 \usage{
 
 loadZIPcsvfromURL(urlAddress = NULL,
-                              encoding = NULL,
                               txt = FALSE ,
-                              stringsAsFactors = FALSE,
-                            header = TRUE,
-                            quote = "\"",
-                            fill = TRUE,
-                            comment.char = "")
+                           encoding = "Latin-1",
+                           stringsAsFactors = FALSE,
+                           header = TRUE,
+                           quote = "\"",
+                           fill = TRUE,
+                           comment.char = "")
 
 }
 %- maybe also 'usage' for other objects documented here.
@@ -30,7 +30,7 @@ loadZIPcsvfromURL(urlAddress = NULL,
   logical. if TRUE .txt files will be loaded as tables instead of .csv
   }
   \item{encoding}{
-  character. files encoding. can be NULL
+  character. files encoding.default is Latin-1
   }
   \item{stringsAsFactors}{
   logical: should character vectors be converted to factors? Note that this is overridden by as.is and colClasses, both of which allow finer control.
@@ -68,9 +68,9 @@ A data frame (http://127.0.0.1:10235/help/library/utils/help/data.frame) contain
 \link[easycsv]{loadcsv_multi}
 }
 \examples{
-
-# url = "http://spatialkeydocs.s3.amazonaws.com/FL_insurance_sample.csv.zip"
-# loadZIPcsvfromURL(url)
+library(easycsv)
+url = "http://spatialkeydocs.s3.amazonaws.com/FL_insurance_sample.csv.zip"
+loadZIPcsvfromURL(url)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

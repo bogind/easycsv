@@ -13,8 +13,8 @@ Reads multiple files in table format and creates a data frame from them, with ca
 
 
 loadcsvfromZIP(filezip = NULL,
-                           encoding = NULL,
                            txt = FALSE ,
+                           encoding = "Latin-1",
                            stringsAsFactors = FALSE,
                            header = TRUE,
                            quote = "\"",
@@ -33,7 +33,7 @@ loadcsvfromZIP(filezip = NULL,
   logical. if TRUE .txt files will be loaded as tables instead of .csv
   }
   \item{encoding}{
-  character. files encoding. can be NULL
+  character. files encoding. default is Latin-1
   }
   \item{stringsAsFactors}{
   logical: should character vectors be converted to factors? Note that this is overridden by as.is and colClasses, both of which allow finer control.
@@ -71,14 +71,12 @@ A data frame (http://127.0.0.1:10235/help/library/utils/help/data.frame) contain
 \link[easycsv]{loadcsv_multi}
 }
 \examples{
-
-
-## filezip = "D:/Data/tables.zip"
-# loadcsvfromZIP(filezip)
-## or for tables in .txt
-# loadcsvfromZIP(filezip, txt = TRUE)
-
+library(easycsv)
+filezip <- system.file("exampleZips", "example_tables.zip", package="easycsv")
+loadcsvfromZIP(filezip)
+loadcsvfromZIP(filezip, txt = TRUE)
 }
+
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")

@@ -1,33 +1,29 @@
 #' @importFrom stats setNames
 #' @importFrom utils read.csv unzip
 loadZIPcsvfromURL <- function(urlAddress = NULL,
-                              encoding = NULL,
                               txt = FALSE ,
+                              encoding = "Latin-1",
                               stringsAsFactors = FALSE,
-                            header = TRUE,
-                            quote = "\"",
-                            fill = TRUE,
-                            comment.char = ""){
+                              header = TRUE,
+                              quote = "\"",
+                              fill = TRUE,
+                              comment.char = ""){
   temp <- tempfile()
   if(is.null(urlAddress)){
   message("Please supply a valid URL containing a .zip file")
   }
-  if(base::substr(urlAddress,
-                  base::nchar(urlAddress)-3,
-                  base::nchar(urlAddress)) != ".zip"){
+  urlend = base::substr(urlAddress,base::nchar(urlAddress)-3, base::nchar(urlAddress))
+  if(urlend != ".zip"){
     message("Please supply a valid URL containing a .zip file")
   }else{
     utils::download.file(urlAddress,
                   destfile = temp,
-                  encoding = base::ifelse(base::is.null(encoding), NULL, encoding),
                   method = "libcurl")
     tempzip <- utils::unzip(zipfile = temp)
 
     base::list2env(stats::setNames(object = base::lapply(tempzip,
                                                          utils::read.csv,
-                                                         encoding = ifelse(base::is.null(encoding),
-                                                                           NULL,
-                                                                           encoding),
+                                                         encoding = encoding,
                                                          stringsAsFactors = stringsAsFactors,
                                                          header = header,
                                                          quote = quote,

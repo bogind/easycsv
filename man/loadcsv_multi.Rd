@@ -12,7 +12,7 @@ Reads multiple files in table format and creates a data frame from them, with ca
 \usage{
 loadcsv_multi(directory = NULL,
                           txt = FALSE,
-                          encoding = NULL,
+                          encoding = "Latin-1",
                           stringsAsFactors = FALSE,
                           header = TRUE,
                           quote = "\"",
@@ -31,7 +31,7 @@ a directory to load the files from, if NULL then a manual choice is provided on 
   logical. if TRUE .txt files will be loaded as tables instead of .csv.
   }
   \item{encoding}{
-  character. files encoding. can be NULL.
+  character. files encoding. default is Latin-1
   }
   \item{stringsAsFactors}{
   logical: should character vectors be converted to factors? Note that this is overridden by as.is and colClasses, both of which allow finer control.
@@ -65,12 +65,13 @@ A data frame (http://127.0.0.1:10235/help/library/utils/help/data.frame) contain
 \link[easycsv]{loadcsvfromZIP}
 }
 \examples{
-# directory = "D:/Data/tables"
-# loadcsv_multi(directory)
+library(easycsv)
+directory = paste(path.package("my_package"),"/inst/extdata/")
+loadcsv_multi(directory)
 ## or:
-# loadcsv_multi()
+loadcsv_multi()
 ## or if your tables are in .txt files with comma seperation:
-# lodacsv_multi(directory,txt = TRUE)
+lodacsv_multi(directory,txt = TRUE)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
