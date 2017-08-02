@@ -10,7 +10,7 @@ loadcsv_multi <- function(directory = NULL,
                           comment.char = ""){
 
   if(is.null(directory)){
-    directory <- choose.dir()
+    directory <- utils::choose.dir()
   }
 
   directory = paste(gsub(pattern = "\\", "/", directory,
