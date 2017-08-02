@@ -1,6 +1,6 @@
 Package: easycsv
 Type: Package
-Title: load multiple csv\txt tables
+Title: Load multiple csv\txt tables
 Date: 2017-08-01
 Version: 1.0.1
 Authors@R: person("Dror", "Bogin", email = "dror.bogin@gmail.com",role = c("aut", "cre"))

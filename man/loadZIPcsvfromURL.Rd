@@ -42,7 +42,7 @@ loadZIPcsvfromURL(urlAddress = NULL,
   the set of quoting characters. To disable quoting altogether, use quote = "". See scan for the behaviour on quotes embedded in quotes. Quoting is only considered for columns read as character, which is all of them unless colClasses is specified.
   }
   \item{fill}{
-  logical. If TRUE then in case the rows have unequal length, blank fields are implicitly added. See ‘Details’.
+  logical. If TRUE then in case the rows have unequal length, blank fields are implicitly added.
   }
   \item{comment.char}{
   character: a character vector of length one containing a single character or an empty string. Use "" to turn off the interpretation of comments altogether.
