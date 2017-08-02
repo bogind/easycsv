@@ -67,11 +67,11 @@ A data frame (http://127.0.0.1:10235/help/library/utils/help/data.frame) contain
 }
 \examples{
 library(easycsv)
-
+directory = tempdir()
 table1 <- data.frame(matrix(1:9, nrow = 3))
-write.csv(table1, file = "D:/tables/table1.csv")
-write.csv(table1, file = "D:/tables/table2.csv")
-loadcsv_multi("D:/tables")
+write.csv(table1, file = paste(directory,"/table1.csv", sep = ""))
+write.csv(table1, file = paste(directory,"/table2.csv", sep = ""))
+loadcsv_multi(directory)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
