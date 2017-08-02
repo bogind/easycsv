@@ -10,7 +10,13 @@ loadcsv_multi <- function(directory = NULL,
                           comment.char = ""){
 
   if(is.null(directory)){
-    directory <- utils::choose.dir()
+    os <- .Platform
+    if(os$OS.type == "windows"){
+      directory <- utils::choose.dir()
+    }else{
+      message("Please supply a valid local directory")
+    }
+
   }
 
   directory = paste(gsub(pattern = "\\", "/", directory,
