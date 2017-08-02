@@ -25,13 +25,13 @@ loadcsv_multi(directory = NULL,
 \arguments{
   \item{directory}{
 %%     ~~Describe \code{x} here~~
-a directory to load the files from, if NULL then a manual choice is provided
+a directory to load the files from, if NULL then a manual choice is provided on windows OS.
 }
   \item{txt}{
-  logical. if TRUE .txt files will be loaded as tables instead of .csv
+  logical. if TRUE .txt files will be loaded as tables instead of .csv.
   }
   \item{encoding}{
-  character. files encoding. can be NULL
+  character. files encoding. can be NULL.
   }
   \item{stringsAsFactors}{
   logical: should character vectors be converted to factors? Note that this is overridden by as.is and colClasses, both of which allow finer control.
