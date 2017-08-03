@@ -4,7 +4,7 @@ Title: Load Multiple 'csv' and 'txt' Tables
 Date: 2017-08-01
 Version: 1.0.1
 Authors@R: person("Dror", "Bogin", email = "dror.bogin@gmail.com",role = c("aut", "cre"))
-Description: Contains functions for easily loading multiple comma separated tables into R's global environment.
+Description: Contains functions which allow users to easily load multiple comma separated tables into R's global environment.
     easycsv allows users to read multiple comma separated tables from a local directory, a zip file or a zip file on a remote directory. 
 Depends: R (>= 3.4.0)
 License: GPL-2
