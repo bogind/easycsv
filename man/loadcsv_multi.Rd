@@ -3,7 +3,7 @@
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 %%  ~~function to do ... ~~
-load multiple csv files to the environment
+read multiple csv files into named data frames
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~

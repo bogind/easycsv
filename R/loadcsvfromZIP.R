@@ -1,4 +1,5 @@
 #' @importFrom stats setNames
+#' @importFrom base nchar make.names tempfile substr lapply paste0 gsub ifelse globalenv unlink list2env stop
 #' @importFrom utils read.csv unzip
 #' @export
 loadcsvfromZIP <- function(filezip = NULL,
@@ -15,13 +16,13 @@ loadcsvfromZIP <- function(filezip = NULL,
 
   if(is.null(filezip)){
     filezip = file.choose()
-    fileEnding = base::substr(filezip,base::nchar(filezip)-3,base::nchar(filezip))
+    fileEnding = substr(filezip,nchar(filezip)-3,nchar(filezip))
     if(fileEnding != ".zip"){
       stop("Please supply a valid .zip file")
     }
     filezip <- unzip(zipfile = filezip)
   }else{
-    fileEnding = base::substr(filezip,base::nchar(filezip)-3,base::nchar(filezip))
+    fileEnding = substr(filezip,nchar(filezip)-3,nchar(filezip))
     if(fileEnding != ".zip"){
       stop("Please supply a valid .zip file")
     filezip <- unzip(zipfile = filezip)

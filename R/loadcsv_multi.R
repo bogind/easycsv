@@ -1,5 +1,6 @@
 #' @importFrom stats setNames
-#' @importFrom utils read.csv unzip
+#' @importFrom base nchar make.names substr lapply paste0 gsub ifelse globalenv paste list2env list.files stop
+#' @importFrom utils read.csv unzip choose.dir
 #' @export
 loadcsv_multi <- function(directory = NULL,
                           txt = FALSE,
@@ -12,10 +13,11 @@ loadcsv_multi <- function(directory = NULL,
 
   if(is.null(directory)){
     os <- .Platform
-    if(os$OS.type == "windows"){
-      directory <- utils::choose.dir()
+    si <- as.list(Sys.info())
+    if(os$OS.type == "windows" | tolower(si$sysname) == "linux"){
+      directory <- choose.dir()
     }else{
-      message("Please supply a valid local directory")
+      stop("Please supply a valid local directory")
     }
 
   }

@@ -1,5 +1,6 @@
 #' @importFrom stats setNames
-#' @importFrom utils read.csv unzip
+#' @importFrom base nchar make.names tempfile substr lapply paste0 gsub ifelse globalenv unlink list2env stop
+#' @importFrom utils read.csv unzip download.file
 #' @export
 loadZIPcsvfromURL <- function(urlAddress = NULL,
                               txt = FALSE ,
@@ -13,37 +14,37 @@ loadZIPcsvfromURL <- function(urlAddress = NULL,
   if(is.null(urlAddress)){
   stop("Please supply a valid URL containing a .zip file")
   }
-  urlend = base::substr(urlAddress,base::nchar(urlAddress)-3, base::nchar(urlAddress))
+  urlend = substr(urlAddress,nchar(urlAddress)-3, nchar(urlAddress))
   if(urlend != ".zip"){
     stop("Please supply a valid URL containing a .zip file")
   }else{
-    utils::download.file(urlAddress,
+    download.file(urlAddress,
                   destfile = temp,
                   method = "libcurl")
-    tempzip <- utils::unzip(zipfile = temp)
+    tempzip <- unzip(zipfile = temp)
 
-    base::list2env(stats::setNames(object = base::lapply(tempzip,
-                                                         utils::read.csv,
-                                                         encoding = encoding,
-                                                         stringsAsFactors = stringsAsFactors,
-                                                         header = header,
-                                                         quote = quote,
-                                                         dec = ".",
-                                                         fill = fill,
-                                                         comment.char = comment.char),
-                                   nm = base::make.names(
-                                     base::paste0("",
-                                                  base::substr(
-                                                    base::gsub(
-                                                      base::ifelse(txt == TRUE,
+    list2env(setNames(object = lapply(tempzip,
+                                      read.csv,
+                                      encoding = encoding,
+                                      stringsAsFactors = stringsAsFactors,
+                                      header = header,
+                                      quote = quote,
+                                      dec = ".",
+                                      fill = fill,
+                                      comment.char = comment.char),
+                                   nm = make.names(
+                                          paste0("",
+                                                  substr(
+                                                    gsub(
+                                                      ifelse(txt == TRUE,
                                                                    "*.txt$",
                                                                    "*.csv$"),
                                                       "",
                                                       tempzip),
                                                     3, 40))))
-                   , base::globalenv())
+                   , globalenv())
 
-    base::unlink(temp, recursive = TRUE)
+    unlink(temp, recursive = TRUE)
   }
 
 
