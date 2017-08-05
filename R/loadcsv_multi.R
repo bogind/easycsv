@@ -1,5 +1,4 @@
 #' @importFrom stats setNames
-#' @importFrom base nchar make.names substr lapply paste0 gsub ifelse globalenv paste list2env list.files stop
 #' @importFrom utils read.csv unzip choose.dir
 #' @export
 loadcsv_multi <- function(directory = NULL,

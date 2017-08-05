@@ -1,5 +1,4 @@
 #' @importFrom stats setNames
-#' @importFrom base nchar make.names tempfile substr lapply paste0 gsub ifelse globalenv unlink list2env stop
 #' @importFrom utils read.csv unzip download.file
 #' @export
 loadZIPcsvfromURL <- function(urlAddress = NULL,
