@@ -4,8 +4,8 @@ Title: Load Multiple 'csv' and 'txt' Tables
 Date: 2017-08-01
 Version: 1.0.1
 Authors@R: person("Dror", "Bogin", email = "dror.bogin@gmail.com",role = c("aut", "cre"))
-Description: Contains functions which allow users to easily read multiple comma separated tables and create a data frame under the same name.
-    Allows users to read multiple comma separated tables from a local directory, a zip file or a zip file on a remote directory. 
+Description: Allows users to easily read multiple comma separated tables and create a data frame under the same name.
+    Is able to read multiple comma separated tables from a local directory, a zip file or a zip file on a remote directory. 
 Depends: R (>= 3.2.3)
 License: GPL-2
 URL: https://github.com/bogind/easycsv

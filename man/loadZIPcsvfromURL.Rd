@@ -61,7 +61,7 @@ loadZIPcsvfromURL is used for comma separated tables inside of a .zip file on th
 %%  \item{comp1 }{Description of 'comp1'}
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
-A data frame (http://127.0.0.1:10235/help/library/utils/help/data.frame) containing a representation of the data in the file.
+A \link[base]{data.frame} containing a representation of the data in the file.
 }
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~

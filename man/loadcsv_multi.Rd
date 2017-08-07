@@ -57,7 +57,7 @@ loadcsvfromZIP is used for comma separated tables inside of a .zip file.
 loadZIPcsvfromURL is used for comma separated tables inside of a .zip file on the internet, no download needed.
 }
 \value{
-A data frame (http://127.0.0.1:10235/help/library/utils/help/data.frame) containing a representation of the data in the file.
+A \link[base]{data.frame} containing a representation of the data in the file.
 }
 
 \seealso{
@@ -66,12 +66,12 @@ A data frame (http://127.0.0.1:10235/help/library/utils/help/data.frame) contain
 \link[easycsv]{loadcsvfromZIP}
 }
 \examples{
-library(easycsv)
-directory = tempdir()
-table1 <- data.frame(matrix(1:9, nrow = 3))
-write.csv(table1, file = paste(directory,"/table1.csv", sep = ""))
-write.csv(table1, file = paste(directory,"/table2.csv", sep = ""))
-loadcsv_multi(directory)
+  library(easycsv)
+  directory = tempdir()
+  table1 <- data.frame(matrix(1:9, nrow = 3))
+  write.csv(table1, file = file.path(directory,"/table1.csv"))
+  write.csv(table1, file = file.path(directory,"/table2.csv"))
+  loadcsv_multi(directory)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
