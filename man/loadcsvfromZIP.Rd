@@ -72,13 +72,13 @@ A \link[base]{data.frame} containing a representation of the data in the file.
 \link[easycsv]{loadcsv_multi}
 }
 \examples{
-library(easycsv)
-filezip <- system.file("exampleZips", "example_tables.zip", package="easycsv")
-loadcsvfromZIP(filezip)
-loadcsvfromZIP(filezip, txt = TRUE)
+  require(easycsv)
+  filezip <- system.file("exampleZips", "example_tables.zip", package="easycsv")
+  loadcsvfromZIP(filezip)
+  loadcsvfromZIP(filezip, txt = TRUE)
 }
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ ~utilities }
+\keyword{ ~misc }

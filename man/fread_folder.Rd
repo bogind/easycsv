@@ -133,7 +133,8 @@ A \link[base]{data.frame} containing a representation of the data in the file.
 \link[data.table]{fread}
 }
 \examples{
-  library(easycsv)
+  require(easycsv)
+  require("data.table")
   directory = getwd()
   write.csv(data.frame(matrix(1:9, nrow = 3)), file = file.path(directory,"/table1.csv"))
   write.csv(data.frame(matrix(1:9, nrow = 3)), file = file.path(directory,"/table2.csv"))
@@ -143,5 +144,5 @@ A \link[base]{data.frame} containing a representation of the data in the file.
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~utilities }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~misc }% __ONLY ONE__ keyword per line
+\keyword{ ~utilities }
+\keyword{ ~misc }
