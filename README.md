@@ -15,11 +15,20 @@ and .zip files on a remote url (`loadZIPcsvfromURL(my_remote_zip_file)`).
 
 how do you install easycsv?
 
-well since the library is not on CRAN you need devttols to install it.
-you can paste the following code to install easycsv:
+**easycsv** is now on CRAN and can be installed like any other library with this code:
+```
+install.packages("easycsv")
+```
+for the most updated versions developer version, 
+it is still recommended to download from github since i add and improve functions whenever i can,
+but i don't allways have time to update documentation to cran standards.
+
+The the developer version can be downloaded with the following code:
 
 ```
+if ("devtools" %in% rownames(installed.packages()) == FALSE) {
 install.packages("devtools")
+}
 devtools::install_github("bogind/easycsv")
 
 ```
