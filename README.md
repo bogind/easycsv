@@ -1,5 +1,5 @@
 # easycsv
-[![](http://cranlogs.r-pkg.org/badges/easycsv)](http://cran.rstudio.com/web/packages/easycsv/index.html)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/easycsv?color=red)](http://cran.rstudio.com/web/packages/easycsv/index.html)
 
 ### NOTE: to all familiar users, the **"txt"** parameter has been replaced in loadcsv_multi and fread_folder for the more suitable "extension" parameter, which now allows for a **"BOTH"** argument in either upper or lower case.
 
