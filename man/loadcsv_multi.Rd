@@ -11,7 +11,7 @@ Reads multiple files in table format and creates a data frame from them, with ca
 }
 \usage{
 loadcsv_multi(directory = NULL,
-                          txt = FALSE,
+                          extension = "CSV",
                           encoding = "Latin-1",
                           stringsAsFactors = FALSE,
                           header = TRUE,
@@ -27,7 +27,7 @@ loadcsv_multi(directory = NULL,
 %%     ~~Describe \code{x} here~~
 a directory to load the files from, if NULL then a manual choice is provided on windows OS.
 }
-  \item{txt}{
+  \item{extension}{
   logical. if TRUE .txt files will be loaded as tables instead of .csv.
   }
   \item{encoding}{
@@ -67,12 +67,11 @@ A \link[base]{data.frame} containing a representation of the data in the file.
 }
 \examples{
   require(easycsv)
-  directory = tempdir()
+  directory = getwd()
   table1 <- data.frame(matrix(1:9, nrow = 3))
   write.csv(table1, file = file.path(directory,"/table1.csv"))
-  write.csv(table1, file = file.path(directory,"/table2.csv"))
-  loadcsv_multi(directory)
-
+  write.csv(table1, file = file.path(directory,"/table2.txt"))
+  loadcsv_multi(directory, extension = "BOTH")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

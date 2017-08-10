@@ -2,7 +2,7 @@
 #' @importFrom utils installed.packages
 #' @export
 fread_folder = function(directory = NULL,
-                        txt = FALSE,
+                        extension = "CSV",
                         sep="auto",
                         nrows=-1L,
                         header="auto",
@@ -49,19 +49,20 @@ fread_folder = function(directory = NULL,
 
   endings = list()
 
-  if(txt == TRUE){
+  if(tolower(extension) == "txt"){
     endings[1] =  "*\\.txt$"
   }
-  if(txt == FALSE){
+  if(tolower(extension) == "csv"){
     endings[1] =  "*\\.csv$"
 
   }
-  if(txt == "BOTH"){
+  if(tolower(extension) == "both"){
     endings[1] =  "*\\.txt$"
     endings[2] =  "*\\.csv$"
-  }else{
-    stop("Pleas supply a valid value for 'txt',\n
-         allowed values are: TRUE,FALSE,'BOTH'.")
+  }
+  if((tolower(extension) %in% c("txt","csv","both")) == FALSE){
+    stop("Pleas supply a valid value for 'extension',\n
+         allowed values are: 'TXT','CSV','BOTH'.")
   }
   tempfiles = list()
   temppath = list()

@@ -11,7 +11,7 @@ Reads multiple files in table format using \link[data.table]{fread}'s speed and 
 }
 \usage{
 fread_folder(directory = NULL,
-                        txt = FALSE,
+                        extension = "CSV",
                         sep = "auto",
                         nrows = -1L,
                         header = "auto",
@@ -41,8 +41,8 @@ fread_folder(directory = NULL,
   \item{directory}{
   a directory to load the files from, if NULL then a manual choice is provided on windows OS.
   }
-  \item{txt}{
-  "TRUE" for tables in '.txt' files, "FALSE" for tables in '.csv' files, "BOTH" for both file endings.
+  \item{extension}{
+  "TXT" for tables in '.txt' files, "CSV" for tables in '.csv' files, "BOTH" for both file endings.
 
 }
   \item{sep}{
@@ -140,7 +140,7 @@ A \link[base]{data.frame} containing a representation of the data in the file.
   write.csv(data.frame(matrix(1:9, nrow = 3)), file = file.path(directory,"/table2.csv"))
   write.csv(data.frame(matrix(1:9, nrow = 3)), file = file.path(directory,"/table3.txt"))
   write.csv(data.frame(matrix(1:9, nrow = 3)), file = file.path(directory,"/table4.txt"))
-  fread_folder(directory, txt = "BOTH")
+  fread_folder(directory, extension = "BOTH")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
