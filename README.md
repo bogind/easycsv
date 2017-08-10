@@ -1,4 +1,5 @@
 # easycsv
+[![](http://cranlogs.r-pkg.org/badges/easycsv)](http://cran.rstudio.com/web/packages/easycsv/index.html)
 
 why should use easycsv?
 
