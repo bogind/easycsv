@@ -14,9 +14,10 @@ either from a central folder, a remote website or a handy zip file.
 how do you use easycsv?
 
 well its easy, if all your csv files are inside a folder, 
-  just use `loadcsv_multi(my_folder)` or `loadcsv_multi(my_folder, txt = TRUE)` if you have comma separated text files.
+  just use `loadcsv_multi(my_folder)` or `loadcsv_multi(my_folder, extension = "BOTH")` if you have comma separated text files.
 the same easy and simple use is available for .zip files (`loadcsvfromZIP(my_zip_file)`),
 and .zip files on a remote url (`loadZIPcsvfromURL(my_remote_zip_file)`).  
+#### faster version of `loadcsv_multi` now available, `fread_folder` which is based on data.table's fread function
 
 how do you install easycsv?
 
