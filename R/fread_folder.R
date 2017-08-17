@@ -15,7 +15,6 @@ fread_folder = function(directory = NULL,
                         colClasses=NULL,
                         integer64=getOption("datatable.integer64"),         # default: "integer64"
                         dec=if (sep!=".") "." else ",",
-                        col.names,
                         check.names=FALSE,
                         encoding="unknown",
                         quote="\"",
@@ -23,6 +22,7 @@ fread_folder = function(directory = NULL,
                         fill=FALSE,
                         blank.lines.skip=FALSE,
                         key=NULL,
+                        Names=NULL,
                         showProgress=getOption("datatable.showProgress"),   # default: TRUE
                         data.table=getOption("datatable.fread.datatable")   # default: TRUE
 ){
@@ -77,10 +77,22 @@ fread_folder = function(directory = NULL,
     else{
     temppath = unlist(temppath)
     tempfiles = unlist(tempfiles)
+    count = 0
     for(tbl in temppath){
+      count = count+1
       DTname1 = paste0(gsub(directory, "", tbl))
       DTname2 = paste0(gsub("/", "", DTname1))
-      DTname3 = paste0(gsub(i, "", DTname2))
+      if(!is.null(Names)){
+        if((length(Names) != length(temppath))| (class(Names) != "character")){
+          stop("Names must a character vector of same length as the files to be read.")
+        }else{
+          DTname3 = Names[count]
+        }
+
+      }else{
+        DTname3 = paste0(gsub(i, "", DTname2))
+      }
+
       DTable <- data.table::fread(input = tbl,
                                   sep=sep,
                                   nrows=nrows,
@@ -93,7 +105,6 @@ fread_folder = function(directory = NULL,
                                   drop=drop,
                                   colClasses=colClasses,
                                   dec=if (sep!=".") "." else ",",
-                                  col.names,
                                   check.names=check.names,
                                   encoding=encoding,
                                   quote=quote,

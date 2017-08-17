@@ -24,7 +24,6 @@ fread_folder(directory = NULL,
                         colClasses = NULL,
                         integer64=getOption("datatable.integer64"),# default:"integer64"
                         dec = if (sep!=".") "." else ",",
-                        col.names,
                         check.names = FALSE,
                         encoding = "unknown",
                         quote = "\"",
@@ -32,6 +31,7 @@ fread_folder(directory = NULL,
                         fill = FALSE,
                         blank.lines.skip = FALSE,
                         key = NULL,
+                        Names=NULL,
                         showProgress = getOption("datatable.showProgress"),# default: TRUE
                         data.table=getOption("datatable.fread.datatable")
                           )
@@ -81,9 +81,6 @@ fread_folder(directory = NULL,
   \item{dec}{
   The decimal separator as in base::read.csv. If not "." (default) then usually ",". See details.
   }
-  \item{col.names}{
-  A vector of optional names for the variables (columns). The default is to use the header column if present or detected, or if not "V" followed by the column number.
-  }
   \item{check.names}{
   default is FALSE. If TRUE then the names of the variables in the data.table are checked to ensure that they are syntactically valid variable names. If necessary they are adjusted (by \link[base]{make.names}) so that they are, and also to ensure that there are no duplicates.
   }
@@ -104,6 +101,9 @@ fread_folder(directory = NULL,
   }
   \item{key}{
   Character vector of one or more column names which is passed to setkey. It may be a single comma separated string such as key="x,y,z", or a vector of names such as key=c("x","y","z"). Only valid when argument data.table=TRUE
+  }
+  \item{Names}{
+  A character vector of names for the tables to be read, note that the table will be read and listed by an alphabetical order, use with caution.
   }
   \item{showProgress}{
   TRUE displays progress on the console using \verb{\r}. It is produced in fread's C code where the very nice (but R level) txtProgressBar and tkProgressBar are not easily available.
