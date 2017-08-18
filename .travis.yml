@@ -3,3 +3,6 @@
 language: r
 warnings_are_errors: false
 sudo: required
+
+os: osx
+osx_image: xcode8
