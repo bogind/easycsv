@@ -29,8 +29,5 @@ choose_dir = function(){
              intern = FALSE, ignore.stderr = TRUE)
       directory <- system("cat /tmp/R_folder && rm -f /tmp/R_folder", intern = TRUE)
     }
-  else{
-    message("Your Operating System does not support this functiona t this time")
-    stop("Please contact us at: 'https://github.com/bogind/easycsv/issues', so that we may implement it on your system with the next version")}
   return(directory)
 }
