@@ -11,6 +11,8 @@ output: html_document
 
 * 'txt' parameter no longer exists, changed to extension and now takes as argument either 'TXT','CSV' or 'BOTH', in lower or upper case, this extends to loadcsv_multi and fread_folder.
 
-# easycsv 1.0.4 17/08/2017
+# easycsv 1.0.5 19/08/2017
 
-*removed option to add a colnames vector in fread_folder, added a Names option for tables instead.
+*added Identify.OS and choose_dir, as utility functions.
+meaning that even for Mac OSX and Linux users if the local directory in functions is not entered you can choose it interactively through a popup widget window.
+

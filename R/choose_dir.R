@@ -1,21 +1,5 @@
 #' @export
 choose_dir = function(){
-  Identify.OS = function(){
-    pl <- .Platform$OS.type
-    if(tolower(pl) == "windows"){
-      os = structure("windows", class = "character")
-    }
-    else{
-      si <- as.list(Sys.info())
-      if(tolower(si$sysname) == "linux"){
-        os = structure("Linux", class = "character")
-      }
-      if(tolower(si$sysname) == "darwin"){
-        os = structure("MacOSX", class = "character")
-      }
-    }
-    return(os)
-  }
   os = Identify.OS()
   if(tolower(os) == "windows"){
     directory <- utils::choose.dir()
@@ -24,7 +8,7 @@ choose_dir = function(){
       directory <- system("zenity --file-selection --directory")
     }
     if(tolower(os) == "macosx"){
-      system("osascript -e 'tell app \"R\" to POSIX path of (choose folder with prompt \"Choose Folder:\")' > /tmp/R_folder",
+      system("osascript -e 'tell app \"RStudio\" to POSIX path of (choose folder with prompt \"Choose Folder:\")' > /tmp/R_folder",
              intern = FALSE, ignore.stderr = TRUE)
       directory <- system("cat /tmp/R_folder && rm -f /tmp/R_folder", intern = TRUE)
     }

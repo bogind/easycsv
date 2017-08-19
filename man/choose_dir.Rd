@@ -16,7 +16,7 @@ choose_dir()
 \details{
 %%  ~~ If necessary, more details than the description above ~~
   This brings up folder selection widget, it requires no arguments and is implemented into \link[easycsv]{fread_folder} & \link[easycsv]{loadcsv_multi} as the default if no directory is supplied. Currently works only on mac OS,windows and Linux.
-  for the windows implementation and further detail see \link[utils]{choose.dir}.
+  for the windows implementation and further detail see \href{https://www.rdocumentation.org/packages/utils/versions/3.4.1/topics/choose.dir}{choose.dir(remote url)}.
 }
 \value{
 %%  ~Describe the value returned
@@ -32,7 +32,7 @@ A length-one character vector, character NA if ‘Cancel’ was selected.
 
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
-\link[utils]{choose.dir}, \link[easycsv]{Identify.OS}
+\href{chttps://www.rdocumentation.org/packages/utils/versions/3.4.1/topics/choose.dir}{choose.dir(remote url)}, \link[easycsv]{Identify.OS}
 }
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
