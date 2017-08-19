@@ -5,7 +5,9 @@
 
 ### NOTE: to all familiar users, the **"txt"** parameter has been replaced in loadcsv_multi and fread_folder for the more suitable "extension" parameter, which now allows for a **"BOTH"** argument in either upper or lower case.
 
-
+#### news for Mac OSX and Linux users:
+*there is now a choose_dir function available for you, similar to choose.dir on windows.
+for more details check the help page for the function or the documentation page for choose.dir.
 
 why should use easycsv?
 

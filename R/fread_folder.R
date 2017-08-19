@@ -32,10 +32,12 @@ fread_folder = function(directory = NULL,
   }
 
   if(is.null(directory)){
-    os <- .Platform
-
-    if(os$OS.type == "windows"){
+    os = Identify.OS()
+    if(tolower(os) == "windows"){
       directory <- utils::choose.dir()
+      if(tolower(os) == "linux" | tolower(os) == "macosx"){
+        directory <- choose_dir()
+      }
     }else{
       stop("Please supply a valid local directory")
     }
