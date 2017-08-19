@@ -1,8 +1,11 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 language: r
-warnings_are_errors: false
-sudo: required
 
-os: osx
-osx_image: xcode8
+matrix:
+    include:
+        - os: linux
+          sudo: required
+        - os: osx
+          language: r
+          osx_image: xcode8

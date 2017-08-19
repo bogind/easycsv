@@ -1,5 +1,4 @@
 #' @export
-#' @importFrom utils choose.dir
 choose_dir = function(){
   Identify.OS = function(){
     pl <- .Platform$OS.type
@@ -19,7 +18,7 @@ choose_dir = function(){
   }
   os = Identify.OS()
   if(tolower(os) == "windows"){
-    directory <- choose.dir()
+    directory <- utils::choose.dir()
   }
     if(tolower(os) == "linux"){
       directory <- system("zenity --file-selection --directory")
