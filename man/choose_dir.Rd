@@ -32,7 +32,7 @@ A length-one character vector, character NA if ‘Cancel’ was selected.
 
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
-\href{chttps://www.rdocumentation.org/packages/utils/versions/3.4.1/topics/choose.dir}{choose.dir(remote url)}, \link[easycsv]{Identify.OS}
+\href{https://www.rdocumentation.org/packages/utils/versions/3.4.1/topics/choose.dir}{choose.dir(remote url)}, \link[easycsv]{Identify.OS}
 }
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
