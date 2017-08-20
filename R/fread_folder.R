@@ -1,5 +1,6 @@
 #' @importFrom stats setNames
 #' @importFrom utils installed.packages
+#' @importFrom data.table fread
 #' @export
 fread_folder = function(directory = NULL,
                         extension = "CSV",
