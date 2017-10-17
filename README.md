@@ -1,6 +1,6 @@
 # easycsv
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/easycsv)](https://CRAN.R-project.org/package=easycsv)
-[![Downloads](http://cranlogs.r-pkg.org/badges/easycsv)](https://CRAN.R-project.org/package=easycsv)
+[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/easycsv)](https://CRAN.R-project.org/package=easycsv)
 [![Travis-CI Build Status](https://travis-ci.org/bogind/easycsv.svg?branch=master)](https://travis-ci.org/bogind/easycsv)
 
 ### NOTE: to all familiar users, the **"txt"** parameter has been replaced in loadcsv_multi and fread_folder for the more suitable "extension" parameter, which now allows for a **"BOTH"** argument in either upper or lower case.
