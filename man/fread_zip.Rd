@@ -12,7 +12,7 @@ works on .zip files only.
 }
 \usage{
 fread_zip(filezip = NULL,
-                        extension = "CSV",
+                        extension = "BOTH",
                         sep = "auto",
                         nrows = -1L,
                         header = "auto",
