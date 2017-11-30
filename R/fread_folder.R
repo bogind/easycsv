@@ -24,6 +24,7 @@ fread_folder = function(directory = NULL,
                         blank.lines.skip=FALSE,
                         key=NULL,
                         Names=NULL,
+                        prefix=NULL,
                         showProgress=getOption("datatable.showProgress"),   # default: TRUE
                         data.table=getOption("datatable.fread.datatable")   # default: TRUE
 ){
@@ -78,54 +79,59 @@ fread_folder = function(directory = NULL,
       num = num+1
     }
     else{
-    temppath = unlist(temppath)
-    tempfiles = unlist(tempfiles)
-    count = 0
-    for(tbl in temppath){
-      count = count+1
-      DTname1 = paste0(gsub(directory, "", tbl))
-      DTname2 = paste0(gsub("/", "", DTname1))
-      if(!is.null(Names)){
-        if((length(Names) != length(temppath))| (class(Names) != "character")){
-          stop("Names must a character vector of same length as the files to be read.")
+      temppath = unlist(temppath)
+      tempfiles = unlist(tempfiles)
+      count = 0
+      for(tbl in temppath){
+        count = count+1
+        DTname1 = paste0(gsub(directory, "", tbl))
+        DTname2 = paste0(gsub("/", "", DTname1))
+        if(!is.null(Names)){
+          if((length(Names) != length(temppath))| (class(Names) != "character")){
+            stop("Names must a character vector of same length as the files to be read.")
+          }else{
+            DTname3 = Names[count]
+          }
+
         }else{
-          DTname3 = Names[count]
+          DTname3 = paste0(gsub(i, "", DTname2))
+        }
+        if(!is.null(prefix) && is.character(prefix)){
+          DTname4 = paste(prefix,DTname3, sep = "")
+        }else{
+          DTname4 = DTname3
         }
 
-      }else{
-        DTname3 = paste0(gsub(i, "", DTname2))
-      }
+        DTable <- data.table::fread(input = tbl,
+                                    sep=sep,
+                                    nrows=nrows,
+                                    header=header,
+                                    na.strings=na.strings,
+                                    stringsAsFactors=stringsAsFactors,
+                                    verbose = verbose,
+                                    autostart=autostart,
+                                    skip=skip,
+                                    drop=drop,
+                                    colClasses=colClasses,
+                                    dec=if (sep!=".") "." else ",",
+                                    check.names=check.names,
+                                    encoding=encoding,
+                                    quote=quote,
+                                    strip.white=strip.white,
+                                    fill=fill,
+                                    blank.lines.skip=blank.lines.skip,
+                                    key=key,
+                                    showProgress=getOption("datatable.showProgress"),
+                                    data.table=getOption("datatable.fread.datatable")
+        )
+        assign_to_global <- function(pos=1){
+          assign(x = DTname4,value = DTable, envir=as.environment(pos) )
+        }
+        assign_to_global()
 
-      DTable <- data.table::fread(input = tbl,
-                                  sep=sep,
-                                  nrows=nrows,
-                                  header=header,
-                                  na.strings=na.strings,
-                                  stringsAsFactors=stringsAsFactors,
-                                  verbose = verbose,
-                                  autostart=autostart,
-                                  skip=skip,
-                                  drop=drop,
-                                  colClasses=colClasses,
-                                  dec=if (sep!=".") "." else ",",
-                                  check.names=check.names,
-                                  encoding=encoding,
-                                  quote=quote,
-                                  strip.white=strip.white,
-                                  fill=fill,
-                                  blank.lines.skip=blank.lines.skip,
-                                  key=key,
-                                  showProgress=getOption("datatable.showProgress"),
-                                  data.table=getOption("datatable.fread.datatable")
-      )
-      assign_to_global <- function(pos=1){
-        assign(x = DTname3,value = DTable, envir=as.environment(pos) )
-      }
-      assign_to_global()
-
-      rm(DTable)
+        rm(DTable)
       }
     }
   }
-}
+  }
 

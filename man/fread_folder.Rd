@@ -32,6 +32,7 @@ fread_folder(directory = NULL,
                         blank.lines.skip = FALSE,
                         key = NULL,
                         Names=NULL,
+                        prefix=NULL,
                         showProgress = getOption("datatable.showProgress"),# default: TRUE
                         data.table=getOption("datatable.fread.datatable")
                           )
@@ -104,6 +105,9 @@ fread_folder(directory = NULL,
   }
   \item{Names}{
   A character vector of names for the tables to be read, note that the table will be read and listed by an alphabetical order, use with caution.
+  }
+  \item{prefix}{
+  A character string to be prefixed to each table name.
   }
   \item{showProgress}{
   TRUE displays progress on the console using \verb{\r}. It is produced in fread's C code where the very nice (but R level) txtProgressBar and tkProgressBar are not easily available.

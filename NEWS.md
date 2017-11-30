@@ -16,3 +16,7 @@ output: html_document
 *added Identify.OS and choose_dir, as utility functions.
 meaning that even for Mac OSX and Linux users if the local directory in functions is not entered you can choose it interactively through a popup widget window.
 
+# easycsv 1.0.6 30/11/2017
+
+*added a prefix option for fread_folder, accepts only strings of length 1.
+
