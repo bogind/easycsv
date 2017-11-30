@@ -10,4 +10,4 @@ matrix:
             chrome: stable
         - os: osx
           language: r
-          osx_image: xcode8.3
+          osx_image: xcode8
