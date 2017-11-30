@@ -18,5 +18,5 @@ meaning that even for Mac OSX and Linux users if the local directory in function
 
 # easycsv 1.0.6 30/11/2017
 
-*added a prefix option for fread_folder, accepts only strings of length 1.
+*adde fread_zip which is the fread version of loadcsvfromZIP, also added a prefix option for fread_folder and fread_zip, accepts only strings of length 1.
 

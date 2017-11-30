@@ -3,6 +3,7 @@
 export(Identify.OS)
 export(choose_dir)
 export(fread_folder)
+export(fread_zip)
 export(loadZIPcsvfromURL)
 export(loadcsv_multi)
 export(loadcsvfromZIP)

@@ -1,7 +1,7 @@
 Package: easycsv
 Type: Package
 Title: Load Multiple 'csv' and 'txt' Tables
-Date: 2017-08-20
+Date: 2017-11-30
 Version: 1.0.6
 Authors@R: person("Dror", "Bogin", email = "dror.bogin@gmail.com",role = c("aut", "cre"))
 Description: Allows users to easily read multiple comma separated tables and create a data frame under the same name.

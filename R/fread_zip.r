@@ -1,8 +1,8 @@
-#' @importFrom utils installed.packages
+#' @importFrom utils installed.packages unzip
 #' @importFrom data.table fread
 #' @export
-fread_folder = function(directory = NULL,
-                        extension = "CSV",
+fread_zip = function(filezip = NULL,
+                        extension = "BOTH",
                         sep="auto",
                         nrows=-1L,
                         header="auto",
@@ -13,7 +13,7 @@ fread_folder = function(directory = NULL,
                         skip=0L,
                         drop=NULL,
                         colClasses=NULL,
-                        integer64=getOption("datatable.integer64"),         # default: "integer64"
+                        integer64=getOption("datatable.integer64"),
                         dec=if (sep!=".") "." else ",",
                         check.names=FALSE,
                         encoding="unknown",
@@ -32,22 +32,23 @@ fread_folder = function(directory = NULL,
          call. = FALSE)
   }
 
-  if(is.null(directory)){
-    os = Identify.OS()
-    if(tolower(os) == "windows"){
-      directory <- utils::choose.dir()
-      if(tolower(os) == "linux" | tolower(os) == "macosx"){
-        directory <- choose_dir()
-      }
-    }else{
-      stop("Please supply a valid local directory")
+  if(is.null(filezip)){
+    filezip = file.choose()
+    fileEnding = substr(filezip,nchar(filezip)-3,nchar(filezip))
+    if(fileEnding != ".zip"){
+      stop("Please supply a valid .zip file")
     }
+    filezip <- unzip(zipfile = filezip)
+  }else{
+    fileEnding = substr(filezip,nchar(filezip)-3,nchar(filezip))
+    if(fileEnding != ".zip"){
+      stop("Please supply a valid .zip file")
 
+
+    }else{
+      filezip <- unzip(zipfile = filezip)
+    }
   }
-
-  directory = paste(gsub(pattern = "\\", "/", directory,
-                         fixed = TRUE))
-
 
 
   endings = list()
@@ -68,25 +69,21 @@ fread_folder = function(directory = NULL,
          allowed values are: 'TXT','CSV','BOTH'.")
   }
   tempfiles = list()
-  temppath = list()
   num = 1
   for(i in endings){
-    temppath = paste(directory,list.files(path = directory, pattern=i), sep = "/")
-    tempfiles = list.files(path = directory, pattern=i)
+    tempfiles = filezip[grep(i,filezip)]
     num = num +1
-    if(length(temppath) < 1 | length(tempfiles) < 1){
+    if(length(tempfiles) < 1){
       num = num+1
     }
     else{
-      temppath = unlist(temppath)
-      tempfiles = unlist(tempfiles)
       count = 0
-      for(tbl in temppath){
+      for(tbl in tempfiles){
         count = count+1
-        DTname1 = paste0(gsub(directory, "", tbl))
-        DTname2 = paste0(gsub("/", "", DTname1))
+        DTname1 = paste0(gsub("/", "", tbl))
+        DTname2 = substr(DTname1,2,nchar(DTname1))
         if(!is.null(Names)){
-          if((length(Names) != length(temppath))| (class(Names) != "character")){
+          if((length(Names) != length(tempfiles))| (class(Names) != "character")){
             stop("Names must a character vector of same length as the files to be read.")
           }else{
             DTname3 = Names[count]
@@ -123,14 +120,12 @@ fread_folder = function(directory = NULL,
                                     showProgress=getOption("datatable.showProgress"),
                                     data.table=getOption("datatable.fread.datatable")
         )
-        assign_to_global <- function(pos=1){
-          assign(x = DTname4,value = DTable, envir=as.environment(pos) )
-        }
-        assign_to_global()
+
+          assign(x = DTname4,value = DTable, envir=.GlobalEnv )
 
         rm(DTable)
       }
     }
   }
-  }
+}
 
