@@ -121,7 +121,10 @@ fread_zip = function(filezip = NULL,
                                     data.table=getOption("datatable.fread.datatable")
         )
 
-          assign(x = DTname4,value = DTable, envir=.GlobalEnv )
+        assign_to_global <- function(pos=1){
+          assign(x = DTname4,value = DTable, envir=as.environment(pos) )
+        }
+        assign_to_global()
 
         rm(DTable)
       }
