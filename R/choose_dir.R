@@ -5,7 +5,7 @@ choose_dir = function(){
     directory <- utils::choose.dir()
   }
     if(tolower(os) == "linux"){
-      directory <- system("zenity --file-selection --directory")
+      directory <- system("zenity --file-selection --directory", intern = TRUE)
     }
     if(tolower(os) == "macosx"){
       system("osascript -e 'tell app \"RStudio\" to POSIX path of (choose folder with prompt \"Choose Folder:\")' > /tmp/R_folder",

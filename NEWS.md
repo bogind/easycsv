@@ -20,3 +20,7 @@ meaning that even for Mac OSX and Linux users if the local directory in function
 
 *adde fread_zip which is the fread version of loadcsvfromZIP, also added a prefix option for fread_folder and fread_zip, accepts only strings of length 1.
 
+
+# easycsv 1.0.6 30/11/2017
+
+* fixed choose_dir for linux, had a problem with capturing returned value
