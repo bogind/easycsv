@@ -5,7 +5,8 @@ language: r
 matrix:
     include:
         - os: linux
-          sudo: required
+          sudo: false
+          dist: trusty
           addons:
             chrome: stable
         - os: osx
