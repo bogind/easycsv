@@ -24,7 +24,7 @@ choose_dir()
 %%  \item{comp1 }{Description of 'comp1'}
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
-A length-one character vector, character NA if ‘Cancel’ was selected.
+A length-one character vector, character NA if `Cancel` was selected.
 }
 
 
