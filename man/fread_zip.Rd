@@ -34,8 +34,8 @@ fread_zip(filezip = NULL,
                         key = NULL,
                         Names=NULL,
                         prefix=NULL,
-                        showProgress = getOption("datatable.showProgress"),# default: TRUE
-                        data.table=getOption("datatable.fread.datatable")
+                        showProgress = interactive(),   # default: TRUE
+                        data.table=TRUE
                           )
 }
 %- maybe also 'usage' for other objects documented here.

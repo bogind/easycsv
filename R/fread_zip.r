@@ -24,8 +24,8 @@ fread_zip = function(filezip = NULL,
                         key=NULL,
                         Names=NULL,
                         prefix=NULL,
-                        showProgress=getOption("datatable.showProgress"),   # default: TRUE
-                        data.table=getOption("datatable.fread.datatable")   # default: TRUE
+                        showProgress = interactive(),   # default: TRUE
+                        data.table=TRUE   # default: TRUE
 ){
   if ("data.table" %in% rownames(installed.packages()) == FALSE) {
     stop("data.table needed for this function to work. Please install it.",
@@ -117,8 +117,8 @@ fread_zip = function(filezip = NULL,
                                     fill=fill,
                                     blank.lines.skip=blank.lines.skip,
                                     key=key,
-                                    showProgress=getOption("datatable.showProgress"),
-                                    data.table=getOption("datatable.fread.datatable")
+                                    showProgress=showProgress,
+                                    data.table=data.table
         )
 
         assign_to_global <- function(pos=1){

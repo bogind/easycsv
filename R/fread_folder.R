@@ -9,7 +9,6 @@ fread_folder = function(directory = NULL,
                         na.strings="NA",
                         stringsAsFactors=FALSE,
                         verbose=getOption("datatable.verbose"),
-                        autostart=1L,
                         skip=0L,
                         drop=NULL,
                         colClasses=NULL,
@@ -24,8 +23,8 @@ fread_folder = function(directory = NULL,
                         key=NULL,
                         Names=NULL,
                         prefix=NULL,
-                        showProgress=getOption("datatable.showProgress"),   # default: TRUE
-                        data.table=getOption("datatable.fread.datatable")   # default: TRUE
+                        showProgress = interactive(),   # default: TRUE
+                        data.table=TRUE   # default: TRUE
 ){
   if ("data.table" %in% rownames(installed.packages()) == FALSE) {
     stop("data.table needed for this function to work. Please install it.",
@@ -108,7 +107,6 @@ fread_folder = function(directory = NULL,
                                     na.strings=na.strings,
                                     stringsAsFactors=stringsAsFactors,
                                     verbose = verbose,
-                                    autostart=autostart,
                                     skip=skip,
                                     drop=drop,
                                     colClasses=colClasses,
@@ -120,8 +118,8 @@ fread_folder = function(directory = NULL,
                                     fill=fill,
                                     blank.lines.skip=blank.lines.skip,
                                     key=key,
-                                    showProgress=getOption("datatable.showProgress"),
-                                    data.table=getOption("datatable.fread.datatable")
+                                    showProgress=showProgress,
+                                    data.table=data.table
         )
         assign_to_global <- function(pos=1){
           assign(x = DTname4,value = DTable, envir=as.environment(pos) )
@@ -132,5 +130,5 @@ fread_folder = function(directory = NULL,
       }
     }
   }
-  }
+}
 

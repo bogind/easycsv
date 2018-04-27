@@ -18,7 +18,6 @@ fread_folder(directory = NULL,
                         na.strings = "NA",
                         stringsAsFactors = FALSE,
                         verbose=getOption("datatable.verbose"),
-                        autostart = 1L,
                         skip = 0L,
                         drop = NULL,
                         colClasses = NULL,
@@ -33,9 +32,9 @@ fread_folder(directory = NULL,
                         key = NULL,
                         Names=NULL,
                         prefix=NULL,
-                        showProgress = getOption("datatable.showProgress"),# default: TRUE
-                        data.table=getOption("datatable.fread.datatable")
-                          )
+                        showProgress = interactive(),
+                        data.table=TRUE
+                        )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -63,9 +62,6 @@ fread_folder(directory = NULL,
   }
   \item{verbose}{
   Be chatty and report timings?
-  }
-  \item{autostart}{
-  Any line number within the region of machine readable delimited text, by default 30. If the file is shorter or this line is empty (e.g. short files with trailing blank lines) then the last non empty line (with a non empty line above that) is used. This line and the lines above it are used to auto detect sep and the number of fields. It's extremely unlikely that autostart should ever need to be changed, we hope.
   }
   \item{skip}{
   If 0 (default) use the procedure described below starting on line autostart to find the first data row. skip>0 means ignore autostart and take line skip+1 as the first data row (or column names according to header="auto"|TRUE|FALSE as usual). skip="string" searches for "string" in the file (e.g. a substring of the column names row) and starts on that line (inspired by read.xls in package gdata).
