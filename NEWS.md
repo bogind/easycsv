@@ -27,4 +27,4 @@ meaning that even for Mac OSX and Linux users if the local directory in function
 
 # easycsv 1.0.8 27/04/2018
 
-* temporary fix to `fread_folder` to adapt to the changes in `data.table::fread`. will be reuploaded to CRAN only after more tests.
+* temporary fix to `fread_folder` to adapt to the changes in `data.table::fread`. 
