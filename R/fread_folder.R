@@ -24,12 +24,17 @@ fread_folder = function(directory = NULL,
                         Names=NULL,
                         prefix=NULL,
                         showProgress = interactive(),   # default: TRUE
-                        data.table=TRUE   # default: TRUE
+                        data.table=TRUE,   # default: TRUE
+                        combine = c("global", "data.frame", "list")
 ){
+
+
   if ("data.table" %in% rownames(installed.packages()) == FALSE) {
     stop("data.table needed for this function to work. Please install it.",
          call. = FALSE)
   }
+
+  combine <- match.arg(combine)
 
   if(is.null(directory)){
     os = Identify.OS()
@@ -68,6 +73,7 @@ fread_folder = function(directory = NULL,
   }
   tempfiles = list()
   temppath = list()
+  tempdf_list = list()
   num = 1
   for(i in endings){
     temppath = paste(directory,list.files(path = directory, pattern=i), sep = "/")
@@ -79,6 +85,7 @@ fread_folder = function(directory = NULL,
     else{
       temppath = unlist(temppath)
       tempfiles = unlist(tempfiles)
+
       count = 0
       for(tbl in temppath){
         count = count+1
@@ -121,14 +128,39 @@ fread_folder = function(directory = NULL,
                                     showProgress=showProgress,
                                     data.table=data.table
         )
-        assign_to_global <- function(pos=1){
-          assign(x = DTname4,value = DTable, envir=as.environment(pos) )
+
+        if (combine == "global") {
+
+          assign_to_global <- function(pos=1){
+            assign(x = DTname4,value = DTable, envir=as.environment(pos) )
+          }
+          assign_to_global()
+        } else {
+                    tempdf_list <- append(tempdf_list, setNames(list(DTable), DTname4))
+
         }
-        assign_to_global()
 
         rm(DTable)
       }
     }
   }
-}
 
+
+
+  if (combine != "global") {
+
+    if (combine == "data.frame") {
+      tempdf = data.table::rbindlist(tempdf_list)
+
+      if(!data.table) {
+        tempdf = as.data.frame(tempdf)
+      }
+      return(tempdf)
+    } else {
+      return(tempdf_list)
+    }
+
+
+  }
+
+}
