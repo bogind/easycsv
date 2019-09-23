@@ -5,9 +5,9 @@ Date: 2018-04-27
 Version: 1.0.8
 Authors@R: person("Dror", "Bogin", email = "dror.bogin@gmail.com",role = c("aut", "cre"))
 Description: Allows users to easily read multiple comma separated tables and create a data frame under the same name.
-    Is able to read multiple comma separated tables from a local directory, a zip file or a zip file on a remote directory. 
-Depends: R (>= 3.2.3),
-         data.table (>= 1.10)
+    Is able to read multiple comma separated tables from a local directory, a zip file or a zip file on a remote directory.
+Depends: R (>= 3.2.3)
+Imports: data.table (>= 1.10)
 License: GPL-2
 URL: https://github.com/bogind/easycsv
 BugReports: https://github.com/bogind/easycsv/issues
